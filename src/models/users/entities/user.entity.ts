@@ -1,4 +1,4 @@
-import { Task } from 'src/models/tasks/entities/task.entity';
+import { Task } from '../../tasks/entities/task.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity()
@@ -18,6 +18,7 @@ export class User {
   @OneToMany(() => Task, (task) => task.user, {
     cascade: true,
     onDelete: 'CASCADE',
+    nullable: true,
   })
   tasks: Task[];
 
