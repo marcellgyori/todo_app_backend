@@ -28,7 +28,8 @@ class TaskRepo {
 
   async updateTask(task: Task): Promise<Task> {
     if ((await this.findTask(task)) === undefined) return undefined;
-    return getRepository(Task).save(task);
+    let taskToSave = await getRepository(Task).save(task);
+    return taskToSave;
   }
 
   async deleteTask(task: Task): Promise<boolean> {
